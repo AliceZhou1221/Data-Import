@@ -1,0 +1,11 @@
+---
+title: "data_import"
+output: github_document
+date: "2024-09-17"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+This document will show how to import data
