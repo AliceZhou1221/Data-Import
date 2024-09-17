@@ -46,3 +46,19 @@ pull(litters_df, gd0_weight)
     ## [16] 17.0 21.4   NA   NA   NA 28.0 23.5 22.6   NA 21.7 24.4 19.5 24.3 22.6 22.2
     ## [31] 23.8 22.6 23.8 25.5 23.9 24.5   NA   NA 26.9 27.5 28.5 33.4 21.8 25.4 20.0
     ## [46] 21.8 25.6 23.5 25.5
+
+\##Import excel file Import MLB summary data
+
+``` r
+mlb_df = read_excel("data_import_examples/mlb11.xlsx", sheet = "mlb11")
+```
+
+## Import SAS data
+
+``` r
+pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
+```
+
+## Never use read.csv
+
+## Never use \$
