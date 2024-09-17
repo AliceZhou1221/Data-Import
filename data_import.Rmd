@@ -4,8 +4,31 @@ output: github_document
 date: "2024-09-17"
 ---
 
-```{r setup, include=FALSE}
+```{r setup, echo=FALSE, message = FALSE}
 library(tidyverse)
 ```
 
 This document will show how to import data
+
+##improt the FAS Litters CSV
+```{r}
+#relative path to the github.io
+getwd()
+litters_df = read_csv(file = "data_import_examples/FAS_litters.csv")
+```
+What's missing in the data
+
+```{r}
+litters_df =
+  read_csv(
+    file = "data_import_examples/FAS_litters.csv",
+    na = c("NA", "", "."),
+    col_types = cols(
+      Group = col_factor()
+    )
+  )
+
+litters_df = janitor::clean_names(litters_df)
+pull(litters_df, gd0_weight)
+```
+
