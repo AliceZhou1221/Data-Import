@@ -8,12 +8,6 @@ This document will show how to import data
 
 ``` r
 #relative path to the github.io
-getwd()
-```
-
-    ## [1] "/Users/alicezhou/Desktop/DS1/Data Import"
-
-``` r
 litters_df = read_csv(file = "data_import_examples/FAS_litters.csv")
 ```
 

@@ -14,9 +14,8 @@ This document will show how to import data
 
 ##improt the FAS Litters CSV
 ```{r}
-#relative path to the github.io
-getwd()
-litters_df = read_csv(file = "data_import_examples/FAS_litters.csv")
+#relative path
+litters_df = read_csv("data_import_examples/FAS_litters.csv")
 ```
 What's missing in the data
 
@@ -47,3 +46,19 @@ pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
 
 ## Never use read.csv
 ## Never use $
+
+Cleaning
+```{r}
+names(litters_df)
+```
+```{r}
+litters_df =janitor::clean_names(litters_df)
+names(litters_df)
+```
+## LA 1
+read file using relative path
+```{r}
+pups_df = read_csv("./data_import_examples/FAS_pups.csv")
+```
+
+
