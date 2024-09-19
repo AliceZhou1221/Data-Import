@@ -2,6 +2,8 @@ Data Manipulation
 ================
 2024-09-19
 
+This document will show how to manipulate data
+
 ``` r
 library(tidyverse)
 ```
@@ -543,3 +545,25 @@ arrange(litters_df, pups_born_alive, gd0_weight)
     ## 10 Low7  #112                23.9        40.5          19               6
     ## # ℹ 39 more rows
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
+
+DO THIS when you have multiple steps
+
+``` r
+litters_df =
+  read_csv("./data_import_examples/FAS_litters.csv", na = c("NA", ".", "")) %>% 
+  janitor::clean_names() %>% 
+  select(-pups_born_alive) %>% 
+  filter(group == "Con7") %>% 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight
+  )
+```
+
+    ## Rows: 49 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (2): Group, Litter Number
+    ## dbl (6): GD0 weight, GD18 weight, GD of Birth, Pups born alive, Pups dead @ ...
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.

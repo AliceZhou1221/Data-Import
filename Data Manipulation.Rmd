@@ -3,7 +3,7 @@ title: "Data Manipulation"
 output: github_document
 date: "2024-09-19"
 ---
-
+This document will show how to manipulate data
 ```{r}
 library(tidyverse)
 ```
@@ -88,5 +88,16 @@ mutate(
 arrange(litters_df, gd0_weight)
 arrange(litters_df, desc(gd0_weight))
 arrange(litters_df, pups_born_alive, gd0_weight)
+```
+DO THIS when you have multiple steps
+```{r}
+litters_df =
+  read_csv("./data_import_examples/FAS_litters.csv", na = c("NA", ".", "")) %>% 
+  janitor::clean_names() %>% 
+  select(-pups_born_alive) %>% 
+  filter(group == "Con7") %>% 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight
+  )
 ```
 
