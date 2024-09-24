@@ -1,0 +1,16 @@
+---
+title: "Tidying Data"
+output: github_document
+date: "2024-09-24"
+---
+```{r}
+library(tidyverse)
+options(tiblle.print_min = 5)
+```
+
+
+```{r}
+pulse_df = 
+  haven::read_sas("./")
+```
+
