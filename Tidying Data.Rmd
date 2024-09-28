@@ -45,6 +45,43 @@ litters_df =
     values_to = "weight"
   )
 ```
+```{r}
+pulse_df = 
+  haven::read_sas("./data/public_pulse_data.sas7bdat") |>
+  janitor::clean_names() |>
+  pivot_longer(
+    bdi_score_bl:bdi_score_12m,
+    names_to = "visit", 
+    names_prefix = "bdi_score_",
+    values_to = "bdi") |>
+  mutate(
+    visit = replace(visit, visit == "bl", "00m"),
+    visit = factor(visit)) 
+
+print(pulse_df, n = 12)
+```
+LA
+```{r LA}
+litters_clean_df = 
+  read_csv("./data/FAS_litters.csv") %>% 
+  janitor::clean_names() %>% 
+  select(litter_number, gd0_weight, gd18_weight) %>% 
+  pivot_longer(
+    cols = gd0_weight: gd18_weight,
+    names_to = "gd", 
+    names_prefix = "gd_weight",
+    values_to = "weight") %>% 
+  mutate(
+    gd = case_match(
+      gd,
+      "gd0_weight"  ~ 0,
+      "gd18_weight" ~ 18
+    )
+  )
+  
+```
+
+
 ##pivot wider
 ```{r}
 analysis_df = 
@@ -61,6 +98,5 @@ analysis_df %>%
     names_from = time,
     values_from = mean
   )
-```
 
 
